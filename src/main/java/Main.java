@@ -11,13 +11,19 @@ public class Main {
 
             int speed;
             while (true) {
-                System.out.println("Введите скорость машины №" + i + ":");
-                speed = scanner.nextInt();
+                try {
+                    System.out.println("Введите скорость машины №" + i + ":");
+                    speed = scanner.nextInt();
 
-                if (speed > 0 && speed <= 250) {
+                    if (speed <= 0 || speed > 250) {
+                        System.out.println("Неправильная скорость");
+                        continue;
+                    }
                     break;
+                } catch (Exception e) {
+                    System.out.println("Неправильная скорость");
+                    scanner.next();
                 }
-                System.out.println("Неправильная скорость");
             }
 
             Car car = new Car(name, speed);
